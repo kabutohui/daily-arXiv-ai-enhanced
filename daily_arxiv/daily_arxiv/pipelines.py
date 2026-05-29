@@ -14,7 +14,7 @@ from datetime import datetime, timedelta
 
 class DailyArxivPipeline:
     def __init__(self):
-        self.page_size = 100
+        self.page_size = 5
         self.client = arxiv.Client(self.page_size)
 
     def process_item(self, item: dict, spider):
