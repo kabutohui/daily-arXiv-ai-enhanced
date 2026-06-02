@@ -33,7 +33,7 @@ This innovative tool transforms how you stay updated with arXiv papers by combin
 - One-click copy in Settings to export your keywords and authors configuration
 - Seamlessly combine exported preferences with SKILL for reproducible and shareable setups
 
-👉 **[Try it now!](https://dw-dengwei.github.io/daily-arXiv-ai-enhanced/)** - No installation required
+👉 **[Try it now!](https://kabutohui.github.io/daily-arXiv-ai-enhanced/)** - No installation required
 
 
 
@@ -45,7 +45,7 @@ https://github.com/user-attachments/assets/b25712a4-fb8d-484f-863d-e8da6922f9d7
 # How to use
 This repo will daily crawl arXiv papers about **cs.CV, cs.GR, cs.CL and cs.AI**, and use **DeepSeek** to summarize the papers in **Chinese**.
 If you wish to crawl other arXiv categories, use other LLMs, or other languages, please follow the instructions.
-Otherwise, you can directly use this repo in https://dw-dengwei.github.io/daily-arXiv-ai-enhanced/. Please star it if you like :)
+Otherwise, you can directly use this repo in https://kabutohui.github.io/daily-arXiv-ai-enhanced/. Please star it if you like :)
 
 **Instructions:**
 1. Fork this repo to your own account and delete my own information in [buy-me-a-coffee](./buy-me-a-coffee/README.md).
@@ -137,9 +137,4 @@ We sincerely thank the following individuals and organizations for their promoti
 </table>
 
 
-# Star history
 
-[![Stargazers over time](https://starchart.cc/dw-dengwei/daily-arXiv-ai-enhanced.svg?variant=adaptive)](https://starchart.cc/dw-dengwei/daily-arXiv-ai-enhanced)
-
-# Buy me a coffee
-[here](./buy-me-a-coffee/README.md)

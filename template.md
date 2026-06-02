@@ -1,12 +1,12 @@
 # About
 This tool will daily crawl https://arxiv.org and use LLMs to summarize them.
 
-See in: https://dw-dengwei.github.io/daily-arXiv-ai-enhanced/
+See in: https://kabutohui.github.io/daily-arXiv-ai-enhanced/
 
 # How to use
 This repo will daily crawl arXiv papers about **cs.CV, cs.GR and cs.CL**, and use **DeepSeek** to summarize the papers in **Chinese**.
 If you wish to crawl other arXiv categories, use other LLMs or other languages, please follow the bellow instructions.
-Otherwise, you can directly use this repo in https://dw-dengwei.github.io/daily-arXiv-ai-enhanced/ . Please star it if you like :)
+Otherwise, you can directly use this repo in https://kabutohui.github.io/daily-arXiv-ai-enhanced/ . Please star it if you like :)
 
 **Instructions:**
 1. Fork this repo to your own account
@@ -34,9 +34,3 @@ You can modify it in `.github/workflows/run.yml`
 # Content
 {readme_content}
 
-# Related tools
-- ICML, ICLR, NeurIPS list: https://dw-dengwei.github.io/OpenReview-paper-list/index.html
-
-# Star history
-
-[![Star History Chart](https://api.star-history.com/svg?repos=dw-dengwei/daily-arXiv-ai-enhanced&type=Date)](https://www.star-history.com/#dw-dengwei/daily-arXiv-ai-enhanced&Date)
