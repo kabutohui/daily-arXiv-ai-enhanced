@@ -916,10 +916,11 @@ function parseJsonlData(jsonlText, date) {
       }
       
       const summary = paper.AI && paper.AI.tldr ? paper.AI.tldr : paper.summary;
-      
+
       result[primaryCategory].push({
         title: paper.title,
         url: paper.abs || paper.pdf || `https://arxiv.org/abs/${paper.id}`,
+        pdf: paper.pdf || '',
         authors: Array.isArray(paper.authors) ? paper.authors.join(', ') : paper.authors,
         category: allCategories,
         summary: summary,
@@ -1436,9 +1437,26 @@ function showPaperDetails(paper, paperIndex) {
   const paperLink = document.getElementById('paperLink');
   const pdfLink = document.getElementById('pdfLink');
   const htmlLink = document.getElementById('htmlLink');
-  
+
   // 重置模态框的滚动位置
   modalBody.scrollTop = 0;
+
+  // 构造正确的 PDF URL
+  // 优先使用 paper.pdf，如果没有则从 paper.url 或 paper.id 构造
+  let pdfUrl;
+  if (paper.pdf) {
+    pdfUrl = paper.pdf;
+  } else if (paper.url) {
+    // 从 abs URL 构造 PDF URL
+    pdfUrl = paper.url.replace('/abs/', '/pdf/').replace('http://', 'https://');
+  } else if (paper.id) {
+    pdfUrl = `https://arxiv.org/pdf/${paper.id}`;
+  }
+
+  // 确保 PDF URL 使用 https
+  if (pdfUrl && pdfUrl.startsWith('http://')) {
+    pdfUrl = pdfUrl.replace('http://', 'https://');
+  }
   
   // 组合高亮词：关键词 + 文本搜索
   const modalTitleTerms = [];
@@ -1531,17 +1549,25 @@ function showPaperDetails(paper, paperIndex) {
           </button>
         </div>
         <div class="pdf-container">
-          <iframe src="${paper.url.replace('abs', 'pdf')}" width="100%" height="800px" frameborder="0"></iframe>
+          <iframe src="${pdfUrl}" width="100%" height="800px" frameborder="0"></iframe>
         </div>
       </div>
     </div>
   `;
-  
+
   // Update modal content
   document.getElementById('modalBody').innerHTML = modalContent;
   document.getElementById('paperLink').href = paper.url;
-  document.getElementById('pdfLink').href = paper.url.replace('abs', 'pdf');
-  document.getElementById('htmlLink').href = paper.url.replace('abs', 'html');
+  document.getElementById('pdfLink').href = pdfUrl;
+
+  // 构造 HTML 版本链接
+  let htmlUrl;
+  if (paper.url) {
+    htmlUrl = paper.url.replace('/abs/', '/html/');
+  } else if (paper.id) {
+    htmlUrl = `https://arxiv.org/html/${paper.id}`;
+  }
+  document.getElementById('htmlLink').href = htmlUrl;
   
   // --- GitHub Button Logic ---
   const githubLink = document.getElementById('githubLink');
@@ -1556,7 +1582,7 @@ function showPaperDetails(paper, paperIndex) {
   // ---------------------------
 
   // 提示词来自：https://papers.cool/
-  prompt = `请你阅读这篇文章${paper.url.replace('abs', 'pdf')},总结一下这篇文章解决的问题、相关工作、研究方法、做了什么实验及其结果、结论，最后整体总结一下这篇文章的内容`
+  prompt = `请你阅读这篇文章${pdfUrl},总结一下这篇文章解决的问题、相关工作、研究方法、做了什么实验及其结果、结论，最后整体总结一下这篇文章的内容`
   document.getElementById('kimiChatLink').href = `https://www.kimi.com/_prefill_chat?prefill_prompt=${prompt}&system_prompt=你是一个学术助手，后面的对话将围绕着以下论文内容进行，已经通过链接给出了论文的PDF和论文已有的FAQ。用户将继续向你咨询论文的相关问题，请你作出专业的回答，不要出现第一人称，当涉及到分点回答时，鼓励你以markdown格式输出。&send_immediately=true&force_search=true`;
   
   // 更新论文位置信息
