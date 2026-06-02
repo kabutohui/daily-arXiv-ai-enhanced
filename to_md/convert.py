@@ -16,7 +16,7 @@ if __name__ == "__main__":
         else:
             return len(preference)
 
-    with open(args.data, "r") as f:
+    with open(args.data, "r", encoding='utf-8') as f:
         for line in f:
             data.append(json.loads(line))
 

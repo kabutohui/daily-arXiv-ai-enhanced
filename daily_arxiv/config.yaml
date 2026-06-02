@@ -1,7 +1,32 @@
 arxiv:
-  categories:  # 文章类型
-    - cs.CV
-    - cs.CL
+  # 关键词搜索配置 / Keyword search configuration
+  # 支持的搜索字段: ti(标题), abs(摘要), au(作者), cat(分类)
+  # Supported search fields: ti(title), abs(abstract), au(author), cat(category)
+  #
+  # 搜索语法示例 / Search syntax examples:
+  # - ti:"machine learning"           # 标题包含 machine learning
+  # - abs:"neural network"            # 摘要包含 neural network
+  # - au:"Bengio"                     # 作者名包含 Bengio
+  # - cat:cs.CV                       # 分类为 cs.CV
+  # - ti:"transformer" AND cat:cs.CL  # 标题包含 transformer 且分类为 cs.CL
+  # - ti:"GAN" OR ti:"generative"     # 标题包含 GAN 或 generative
+  # - ti:"diffusion" NOT cat:cs.LG    # 标题包含 diffusion 但分类不是 cs.LG
+  #
+  keywords:
+    - 'abs:gui agent'
+    - 'abs:dllm'
+    - 'abs:ddtree'
+    - 'abs:mllm'
+
+  # 每个关键词的最大结果数 / Maximum results per keyword
+  max_results_per_keyword: 10
+
+  # 总最大结果数 / Total maximum results
+  max_total_results: 100
+
+  # 排序方式: SubmittedDate, Relevance, LastUpdatedDate
+  # Sort by: SubmittedDate, Relevance, LastUpdatedDate
+  sort_by: "SubmittedDate"
 
 llm:
-  model_name: 'deepseek-chat'  # 使用的LLM模型
+  model_name: 'glm-5'  # 使用的LLM模型 / LLM model to use

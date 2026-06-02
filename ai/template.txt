@@ -1,4 +1,14 @@
-Please analyze the following abstract of papers. 
+Please analyze the following abstract of papers.
+
+You must return ONLY a valid JSON object with no additional text, markdown formatting, or code blocks. Return exactly this format:
+
+{{
+    "tldr": "One sentence summary of the paper",
+    "motivation": "What problem does this paper aim to solve and why",
+    "method": "The core approach, methodology, or technique proposed",
+    "result": "The main experimental results or findings",
+    "conclusion": "Key conclusions, implications, or future directions"
+}}
 
 Content:
 {content}
